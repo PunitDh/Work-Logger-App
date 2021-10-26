@@ -6,7 +6,6 @@ function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState(null);
   const [error, setError] = useState(null);
-  const API_URL = process.env.REACT_APP_API_URL;
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -18,7 +17,7 @@ function App() {
     const currentTask = { name: task, timestamp: Date.now() };
     setTasks([...tasks, currentTask]);
     setTask("");
-    fetch(`${API_URL}tasks`, {
+    fetch(`/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -30,7 +29,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(`${API_URL}tasks`, {
+    fetch(`/tasks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
