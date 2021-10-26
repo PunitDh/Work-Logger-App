@@ -18,7 +18,7 @@ function App() {
     const currentTask = { name: task, timestamp: Date.now() };
     setTasks([...tasks, currentTask]);
     setTask("");
-    fetch(`${API_URL}/tasks`, {
+    fetch(`${API_URL}tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -30,7 +30,7 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(`${API_URL}/tasks`, {
+    fetch(`${API_URL}tasks`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
