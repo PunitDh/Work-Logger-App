@@ -2,12 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const mongoose = require("mongoose");
+const path = require("path");
 require("dotenv").config();
 const PORT = process.env.PORT;
 const Task = require("./models/Task");
 
 const origin = { origin: process.env.CLIENT_URL };
 
+app.use(express.static(path.join(__dirname, "client", "build")))
 app.use(cors(origin));
 app.use(express.json());
 

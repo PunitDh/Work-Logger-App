@@ -56,15 +56,15 @@ function App() {
   return (
     <div className="text-center">
       <div className="bg-gray-800 min-h-screen flex flex-col items-center justify-center text-white">
-        <h1 className="text-4xl mb-4 w-6/12 py-4 rounded border-2">Work Logger App</h1>
-        <div className="grid grid-cols-2 gap-4 text-2xl w-6/12 py-4 rounded border-2">
+        <h1 className="text-4xl mb-4 w-8/12 py-4 rounded border-2">Work Logger App</h1>
+        <div className="grid grid-cols-2 gap-4 text-xl w-8/12 py-4 rounded border-2">
           <div className="text-blue-500">Task</div>
           <div className="text-blue-500">Timestamp</div>
           {error ? error : null}
           {
             tasks && tasks.map((t, idx) => (
               <React.Fragment key={idx}>
-                <div className="text-white">{ t.name }</div>
+                <div className="text-white text-left ml-4">{ t.name }</div>
                 <div className="text-white">{ dateFormat(t.timestamp, "ddd, mmm dS, yyyy, h:MM TT") }</div>
               </React.Fragment>
             ))
