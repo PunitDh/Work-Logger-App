@@ -46,5 +46,9 @@ app.post("/tasks", async (req, res) => {
     }
 });
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
+
 // Run the server on specified PORT
 app.listen(PORT, () => console.log("Listening on port", PORT));
