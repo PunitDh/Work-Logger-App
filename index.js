@@ -7,10 +7,8 @@ require("dotenv").config();
 const PORT = process.env.PORT;
 const Task = require("./models/Task");
 
-const origin = { origin: process.env.CLIENT_URL };
-
 app.use(express.static(path.join(__dirname, "client", "build")))
-app.use(cors(origin));
+app.use(cors());
 app.use(express.json());
 
 // Connect to database
