@@ -50,7 +50,7 @@ function App() {
         setTasks(response);
       })
       .catch((err) => setError(err))
-  }, [API_URL]);
+  }, []);
 
   return (
     <div className="text-center">
