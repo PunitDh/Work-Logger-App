@@ -29,7 +29,7 @@ function App() {
           <div className="text-blue-500">Timestamp</div>
           {tasks && tasks.map((t, idx) => <Task key={idx} task={t} />)}
         </div>
-        <LoggerForm tasks setTasks setNotification />
+        <LoggerForm tasks={tasks} setTasks={setTasks} setNotification={setNotification} />
       </div>
     </div>
   );
