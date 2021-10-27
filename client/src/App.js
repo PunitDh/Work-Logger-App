@@ -3,29 +3,11 @@ import React, { useState, useEffect } from "react";
 import { request } from "./request";
 import Task from './components/Task';
 import Notification, { NOTIFY } from './components/Notification';
+import LoggerForm from './components/LoggerForm';
 
 function App() {
-  const [task, setTask] = useState("");
   const [tasks, setTasks] = useState(null);
   const [notification, setNotification] = useState({ message: null, type: null });
-
-  const handleChange = (event) => {
-    event.preventDefault();
-    setTask(event.target.value);
-  }
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const currentTask = { name: task, timestamp: Date.now() };
-    setTasks([...tasks, currentTask]);
-    setTask("");
-    request("POST", '/tasks', currentTask)
-      .then(response =>
-        response.ok ?
-          setNotification({ message: "Work task logged to database", type: NOTIFY.success }) :
-          Promise.reject("Unable to add task at this time"))
-      .catch((err) => setNotification({ message: err, type: NOTIFY.failure }));
-  }
 
   useEffect(() => {
     request("GET", '/tasks')
@@ -47,10 +29,7 @@ function App() {
           <div className="text-blue-500">Timestamp</div>
           {tasks && tasks.map((t, idx) => <Task key={idx} task={t} />)}
         </div>
-        <form className="logger-form" onSubmit={handleSubmit}>
-          <input type="text" autoFocus={true} placeholder="Add New Task" className="input-box" value={task} onChange={handleChange} />
-          <input type="submit" className="submit-button" value="Add New" />
-        </form>
+        <LoggerForm tasks setTasks setNotification />
       </div>
     </div>
   );
