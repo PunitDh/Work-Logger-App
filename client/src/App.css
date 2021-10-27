@@ -1,20 +1,13 @@
-.notification {
-  @apply rounded-lg absolute flex justify-center items-center w-80 h-10 top-4 right-4 border-2;
-  animation: notification 3s linear 3s 1 normal forwards;
-  opacity: 1;
+.logger-container {
+  @apply bg-gray-800 min-h-screen flex flex-col items-center justify-center text-white;
 }
 
-.success {
-  @apply bg-green-300 text-green-700 border-green-700;
+.logger-header {
+  @apply text-4xl my-4 w-11/12 sm:w-8/12 py-4 rounded border-2;
 }
 
-.failure {
-  @apply bg-red-300 text-red-700 border-red-700;
-}
-
-@keyframes notification {
-  to { opacity: 0; }
-  100% { display: none; }
+.logger-box {
+  @apply grid grid-cols-2 gap-4 text-lg sm:text-xl w-11/12 sm:w-8/12 py-4 rounded border-2;
 }
 
 .logger-form {
@@ -29,14 +22,23 @@
   @apply cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base sm:text-lg;
 }
 
-.logger-container {
-  @apply bg-gray-800 min-h-screen flex flex-col items-center justify-center text-white;
+.notification {
+  @apply rounded-lg absolute flex justify-center items-center w-80 h-10 top-4 cursor-pointer right-4 border-2;
+  animation: notification 3s linear 3s 1 normal forwards;
+  opacity: 1;
 }
 
-.logger-header {
-  @apply text-4xl my-4 w-11/12 sm:w-8/12 py-4 rounded border-2;
+.success {
+  @apply bg-green-300 text-green-700 border-green-700;
 }
 
-.logger-box {
-  @apply grid grid-cols-2 gap-4 text-lg sm:text-xl w-11/12 sm:w-8/12 py-4 rounded border-2;
+.failure {
+  @apply bg-red-300 text-red-700 border-red-700;
+}
+
+@keyframes notification {
+  to { 
+    opacity: 0;
+    display: none;
+  }
 }
