@@ -1,3 +1,27 @@
 .notification {
   @apply rounded-lg absolute inline-block align-middle text-center w-80 h-10 top-4 right-4;
 }
+
+.submit-button {
+  @apply cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base sm:text-lg;
+}
+
+.input-box {
+  @apply text-black text-base sm:text-2xl mx-4 pl-2 border-4 w-11/12 sm:w-8/12 border-blue-500 rounded;
+}
+
+.logger-container {
+  @apply bg-gray-800 min-h-screen flex flex-col items-center justify-center text-white;
+}
+
+.logger-header {
+  @apply text-4xl my-4 w-11/12 sm:w-8/12 py-4 rounded border-2;
+}
+
+.logger-box {
+  @apply grid grid-cols-2 gap-4 text-xl w-11/12 sm:w-8/12 py-4 rounded border-2;
+}
+
+.logger-form {
+  @apply flex text-4xl mb-4 w-11/12 sm:w-8/12 py-4;
+}
