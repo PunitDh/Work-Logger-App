@@ -1,13 +1,32 @@
 .notification {
-  @apply rounded-lg absolute inline-block align-middle text-center w-80 h-10 top-4 right-4;
+  @apply rounded-lg absolute flex justify-center items-center w-80 h-10 top-4 right-4 border-2;
+  animation: notification 3s linear 3s 1 normal forwards;
+  opacity: 1;
+}
+
+.success {
+  @apply bg-green-300 text-green-700 border-green-700;
+}
+
+.failure {
+  @apply bg-red-300 text-red-700 border-red-700;
+}
+
+@keyframes notification {
+  to { opacity: 0; }
+  100% { display: none; }
+}
+
+.logger-form {
+  @apply flex text-4xl mb-4 w-11/12 sm:w-8/12 py-4 justify-center items-center;
+}
+
+.input-box {
+  @apply text-black text-base sm:text-lg sm:mx-4 mr-2 pl-2 border-none w-11/12 sm:w-full py-2 rounded;
 }
 
 .submit-button {
   @apply cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded text-base sm:text-lg;
-}
-
-.input-box {
-  @apply text-black text-base sm:text-2xl mx-4 pl-2 border-4 w-11/12 sm:w-8/12 border-blue-500 rounded;
 }
 
 .logger-container {
@@ -19,9 +38,5 @@
 }
 
 .logger-box {
-  @apply grid grid-cols-2 gap-4 text-xl w-11/12 sm:w-8/12 py-4 rounded border-2;
-}
-
-.logger-form {
-  @apply flex text-4xl mb-4 w-11/12 sm:w-8/12 py-4;
+  @apply grid grid-cols-2 gap-4 text-lg sm:text-xl w-11/12 sm:w-8/12 py-4 rounded border-2;
 }

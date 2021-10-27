@@ -2,12 +2,12 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import { request } from "./request";
 import Task from './components/Task';
+import Notification, { NOTIFY } from './components/Notification';
 
 function App() {
   const [task, setTask] = useState("");
   const [tasks, setTasks] = useState(null);
-  const [error, setError] = useState(null);
-  const [notification, setNotification] = useState(null);
+  const [notification, setNotification] = useState({ message: null, type: null });
 
   const handleChange = (event) => {
     event.preventDefault();
@@ -22,33 +22,30 @@ function App() {
     request("POST", '/tasks', currentTask)
       .then(response =>
         response.ok ?
-          setNotification("Work task logged to database") :
+          setNotification({ message: "Work task logged to database", type: NOTIFY.success }) :
           Promise.reject("Unable to add task at this time"))
-      .catch((err) => setError(err));
+      .catch((err) => setNotification({ message: err, type: NOTIFY.failure }));
   }
 
   useEffect(() => {
     request("GET", '/tasks')
-      .then(response => response.ok ? response.json() : Promise.reject("Unable to retrieve tasks at this time"))
-      .then(response => setTasks(response))
-      .catch((err) => setError(err))
+      .then(response => response.ok ? response.json() : Promise.reject("Connection to database failed"))
+      .then(response => {
+        setTasks(response);
+        setNotification({ message: "Successfully connected to database", type: NOTIFY.success });
+      })
+      .catch((err) => setNotification({ message: err, type: NOTIFY.failure }))
   }, []);
 
   return (
     <div className="text-center">
-      {notification ?
-        (<div className="bg-green-300 text-green-700 border-2 border-green-700 notification">{notification}</div>) : null}
-      {error ? (<div className="bg-red-300 text-red-700 border-2 border-red-700 notification">{error}</div>) : null}
+      {notification.message && <Notification message={notification.message} type={notification.type} />}
       <div className="logger-container">
         <h1 className="logger-header">Work Logger App</h1>
         <div className="logger-box">
           <div className="text-blue-500">Task</div>
           <div className="text-blue-500">Timestamp</div>
-          {
-            tasks && tasks.map((t, idx) => (
-              <Task key={idx} task={t} />
-            ))
-          }
+          {tasks && tasks.map((t, idx) => <Task key={idx} task={t} />)}
         </div>
         <form className="logger-form" onSubmit={handleSubmit}>
           <input type="text" autoFocus={true} placeholder="Add New Task" className="input-box" value={task} onChange={handleChange} />
