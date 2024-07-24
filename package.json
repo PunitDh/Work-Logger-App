@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "gcp-build": "cd client && npm install --only=dev && npm install && npm run build"
+    "build-client": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
