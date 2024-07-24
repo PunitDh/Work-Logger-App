@@ -6,7 +6,7 @@ import Notification, { NOTIFY } from "./components/Notification";
 import LoggerForm from "./components/LoggerForm";
 
 function App() {
-  const [tasks, setTasks] = useState(null);
+  const [tasks, setTasks] = useState([]);
   const [notification, setNotification] = useState({
     message: null,
     type: null,
@@ -39,7 +39,7 @@ function App() {
         <div className="logger-box">
           <div className="text-blue-500">Task</div>
           <div className="text-blue-500">Timestamp</div>
-          {tasks && tasks.map((t, idx) => <Task key={idx} task={t} />)}
+          {tasks.map((task) => <Task key={task._id} task={task} />)}
         </div>
         <LoggerForm
           tasks={tasks}

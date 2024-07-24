@@ -1,17 +1,12 @@
-import React from 'react';
+import React from "react";
 
 export const NOTIFY = {
   success: "success",
-  failure: "failure"
-}
+  failure: "failure",
+};
 
 const Notification = ({ message, type }) => {
-
-  return (
-    <div className={`${type} notification`}>
-      {message}
-    </div>
-  )
-}
+  return <div className={`${type} notification`}>{message}</div>;
+};
 
 export default Notification;

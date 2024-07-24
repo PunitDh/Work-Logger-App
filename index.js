@@ -11,7 +11,6 @@ app.use(express.static(path.join(__dirname, "client", "build")));
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-// Connect to database
 mongoose
   .connect(process.env.MONGODB_URL)
   .then(() => console.log("Database connection successful"))
